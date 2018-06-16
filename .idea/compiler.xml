@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="leedcode" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="lsf" target="1.5" />
+      <module name="lsf-base" target="1.5" />
+      <module name="lsf-base-service" target="1.5" />
+      <module name="lsf-cache" target="1.5" />
+      <module name="lsf-common" target="1.5" />
+      <module name="lsf-core" target="1.5" />
+      <module name="lsf-data" target="1.5" />
+      <module name="lsf-framework" target="1.5" />
+      <module name="lsf-integration" target="1.5" />
+      <module name="lsf-messaging" target="1.5" />
+      <module name="lsf-messaging-client" target="1.6" />
+      <module name="lsf-messaging-service" target="1.5" />
+      <module name="lsf-notification" target="1.5" />
+      <module name="lsf-scheduler" target="1.5" />
+      <module name="lsf-scheduler-core" target="1.5" />
+      <module name="lsf-scheduler-service" target="1.5" />
+      <module name="lsf-web" target="1.5" />
+      <module name="MyHouse" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
