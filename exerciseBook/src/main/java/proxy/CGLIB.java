@@ -6,7 +6,7 @@ import org.springframework.cglib.proxy.MethodProxy;
 
 import java.lang.reflect.Method;
 
-public class CGLIBTest {
+public class CGLIB {
 
 
     /**
@@ -31,7 +31,7 @@ public class CGLIBTest {
          */
         public Object createProxy() {
             // 代码增强
-            Enhancer enhancer = new Enhancer(); // 该类用于生成代理对象
+            Enhancer enhancer = new Enhancer(); // 该类用于生成代理对像
             enhancer.setCallback(this); // 参数为拦截器
             enhancer.setSuperclass(target.getClass());// 设置父类
             return enhancer.create(); // 创建代理对象
