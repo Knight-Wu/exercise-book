@@ -1,14 +1,11 @@
-package nio;
+package io.nio;
 
 import java.io.RandomAccessFile;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.file.Paths;
-import java.rmi.server.ExportException;
 
-public class BufferTest {
+public class BufferAndChannel {
 
 
     private static void readAndWriteByBuffer() {
@@ -44,8 +41,29 @@ public class BufferTest {
         }
     }
 
+    private static void directTransferBetweenFile() {
+        try {
+            String inputFilePath = "D:\\WT\\code\\git\\exercise-book\\exerciseBook\\src\\main\\java\\nio\\DataInput.txt";
+            String outputFilePath = "D:\\WT\\code\\git\\exercise-book\\exerciseBook\\src\\main\\java\\nio\\DataOutput2.txt";
+
+            RandomAccessFile fromFile = new RandomAccessFile(inputFilePath, "rw");
+            FileChannel fromChannel = fromFile.getChannel();
+
+            RandomAccessFile toFile = new RandomAccessFile(outputFilePath, "rw");
+            FileChannel toChannel = toFile.getChannel();
+
+            long position = 0;
+            long count = fromChannel.size();
+
+            toChannel.transferFrom(fromChannel, position, count);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
-        System.out.println(". path to absolute path , path to String : " + Paths.get("target").toAbsolutePath().toString());
+        directTransferBetweenFile();
+      /*  System.out.println(". path to absolute path , path to String : " + Paths.get("target").toAbsolutePath().toString());
         System.out.println(". path to absolute path , path to file : " + Paths.get(".").toAbsolutePath().toFile().getAbsolutePath());
         System.out.println("root path: " + Paths.get(".").getRoot());
         System.out.println("parent path: " + Paths.get(".").getParent());
@@ -53,7 +71,7 @@ public class BufferTest {
 
         System.out.println("root path: " + Paths.get("D:\\WT\\code\\git\\exercise-book\\exerciseBook\\src\\main\\java\\nio").getRoot());
         System.out.println("parent path: " + Paths.get("D:\\WT\\code\\git\\exercise-book\\exerciseBook\\src\\main\\java\\nio").getParent());
-        System.out.println("fileName: " + Paths.get("D:\\WT\\code\\git\\exercise-book\\exerciseBook\\src\\main\\java\\nio").getFileName());
+        System.out.println("fileName: " + Paths.get("D:\\WT\\code\\git\\exercise-book\\exerciseBook\\src\\main\\java\\nio").getFileName());*/
 
 //        readAndWriteByBuffer();
     }

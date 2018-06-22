@@ -1,4 +1,4 @@
-package IO;
+package io.bio.simple;
 
 import java.io.BufferedReader;
 import java.io.IOException;
