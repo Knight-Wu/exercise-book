@@ -1,9 +1,16 @@
 package concurrence;
 
 public class TestThreadLocal {
-    static ThreadLocal<Order> tl = new ThreadLocal();
+    private static ThreadLocal<Order> t1 = new ThreadLocal<Order>();
+    private static Order o2 = new Order(2);
+    private static ThreadLocal t2 = new ThreadLocal<Order>() {
+        @Override
+        protected Order initialValue() {
+            return o2;
+        }
+    };
 
-    class Order {
+    static class Order {
         Order(Integer num) {
             this.num = num;
         }
@@ -22,7 +29,7 @@ public class TestThreadLocal {
     private class myRun1 implements Runnable {
 
         public void run() {
-            tl.set(new Order(1));
+//            t1.set(new Order(1));
         }
     }
 
@@ -30,12 +37,16 @@ public class TestThreadLocal {
     private class myRun2 implements Runnable {
 
         public void run() {
-            Order order = tl.get();
+//            Order order = t1.get();
         }
     }
 
     public static void main(String[] args) {
-        System.out.println(0x61c88647
-        );
+        Order o1 = new Order(1);
+        t1.set(o1);
+        System.out.println((t1.get() == o1) ? "it is order 1" : "it is order 2");
+        System.out.println((t2.get() == o1) ? "it is order 1" : "it is order 2");
+
     }
+
 }

@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.channels.AsynchronousServerSocketChannel;
 import java.util.concurrent.CountDownLatch;
+
 public class AsyncServerHandler implements Runnable {
     public CountDownLatch latch;
     public AsynchronousServerSocketChannel channel;
+
     public AsyncServerHandler(int port) {
         try {
             //创建服务端通道
@@ -18,6 +20,7 @@ public class AsyncServerHandler implements Runnable {
             e.printStackTrace();
         }
     }
+
     @Override
     public void run() {
         //CountDownLatch初始化
@@ -27,7 +30,7 @@ public class AsyncServerHandler implements Runnable {
         //生成环境就不需要担心这个问题，以为服务端是不会退出的
         latch = new CountDownLatch(1);
         //用于接收客户端的连接
-        channel.accept(this,new AcceptHandler());
+        channel.accept(this, new AcceptHandler());
         try {
             latch.await();
         } catch (InterruptedException e) {
